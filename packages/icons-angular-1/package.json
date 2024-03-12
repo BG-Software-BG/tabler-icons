@@ -1,0 +1,49 @@
+{
+  "name": "@tabler/icons-react",
+  "version": "3.0.0-beta.2",
+  "license": "MIT",
+  "author": "BG-Software-BG",
+  "description": "A set of free MIT-licensed high-quality SVG icons for you to use in your web projects.",
+  "homepage": "https://tabler-icons.io",
+  "bugs": {
+    "url": "https://github.com/tabler/tabler-icons/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/codecalm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tabler/tabler-icons.git",
+    "directory": "packages/icons-react"
+  },
+  "type": "module",
+  "main": "dist/cjs/tabler-icons-react.js",
+  "main:umd": "dist/umd/tabler-icons-react.js",
+  "module": "dist/esm/tabler-icons-react.mjs",
+  "unpkg": "dist/umd/tabler-icons-react.min.js",
+  "typings": "dist/tabler-icons-react.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm run clean && pnpm run copy:license && pnpm run build:icons && pnpm typecheck && pnpm run build:bundles",
+    "build:icons": "node build.mjs",
+    "build:bundles": "rollup -c ./rollup.config.mjs",
+    "copy:license": "cp ../../LICENSE ./LICENSE",
+    "clean": "rm -rf dist && find . ! -name '.gitkeep' -path '*/src/icons/*' -exec rm -rf {} +",
+    "test": "vitest run",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@tabler/icons": "3.0.0-beta.2"
+  },
+  "devDependencies": {
+
+  },
+  "peerDependencies": {
+    "@angular/common": "^16.0.0 || ^17.0.0",
+    "@angular/core": "^16.0.0 || ^17.0.0"
+  }
+}
