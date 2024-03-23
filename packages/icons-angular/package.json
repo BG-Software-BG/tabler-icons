@@ -28,9 +28,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "pnpm run clean && pnpm run copy:license && pnpm run build:icons && pnpm typecheck && pnpm run build:bundles",
+    "build": "pnpm run clean && pnpm run copy:license && pnpm run build:icons && pnpm typecheck && pnpm run build:ng",
     "build:icons": "node build.mjs",
-    "build:bundles": "rollup -c ./rollup.config.mjs",
+    "build:ng": "ng build --configuration=production",
     "copy:license": "cp ../../LICENSE ./LICENSE",
     "clean": "rm -rf dist && find . ! -name '.gitkeep' -path '*/src/icons/*' -exec rm -rf {} +",
     "test": "vitest run",
