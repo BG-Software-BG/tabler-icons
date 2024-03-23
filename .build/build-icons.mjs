@@ -101,6 +101,6 @@ export const buildJsIcons = ({
     })
   }
 
-  fs.writeFileSync(path.resolve(DIST_DIR, `./src/aliases.ts`), aliasesStr || `export {};`, 'utf-8')
+  // fs.writeFileSync(path.resolve(DIST_DIR, `./src/aliases.ts`), aliasesStr || `export {};`, 'utf-8')
 }
 
