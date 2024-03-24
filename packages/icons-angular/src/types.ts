@@ -1,5 +1,6 @@
-export type IconNode = [elementName: string, attrs: Record<string, string>][];
-export type TablerIcons = { [key: string]: IconNode[] };
+export type TablerIconNode = [elementName: string, attrs: Record<string, string>];
+export type TablerIcon = TablerIconNode[];
+export type TablerIcons = { [key: string]: TablerIconNode[] };
 
 export interface IconProps extends Partial<Omit<SVGSVGElement, 'stroke'>> {
   size?: string | number;

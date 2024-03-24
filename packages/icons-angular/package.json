@@ -39,6 +39,10 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "@prettier/sync": "^0.5.1"
+  },
   "peerDependencies": {
     "@angular/common": "^17.2.0",
     "@angular/core": "^17.2.0"
