@@ -25,7 +25,7 @@ const indexItemTemplate = ({
 const aliasTemplate = ({ fromPascal, toPascal }) => `export { default as Icon${fromPascal}} from './icons/Icon${toPascal}';\n`;
 
 buildJsIcons({
-  name: 'icons-angular/projects/icons-angular', // todo change to base folder
+  name: 'icons-angular',
   componentTemplate,
   indexItemTemplate,
   aliasTemplate,

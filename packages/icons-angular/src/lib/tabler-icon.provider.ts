@@ -8,7 +8,10 @@ export interface ITablerIconProvider {
 export class TablerIconProvider implements ITablerIconProvider {
   constructor(private readonly icons: TablerIcons) {}
 
-  getIcon = (name: string): TablerIcon | null => this.iconExists(name) ? this.icons[name] : null;
+  getIcon = (name: string): TablerIcon | null => {
+    name = name.startsWith('Icon') ? name : `Icon${name}`;
+    return this.iconExists(name) ? this.icons[name] : null;
+  };
 
   private iconExists = (name: string): boolean => typeof this.icons === 'object' && name in this.icons;
 }

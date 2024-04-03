@@ -5,5 +5,5 @@ import defaultAttributes from '../defaultAttributes';
 export class TablerIconConfig {
   size: number = defaultAttributes.outline.width;
   color: string = defaultAttributes.outline.stroke;
-  strokeWidth: number = defaultAttributes.outline.strokeWidth;
+  strokeWidth: number = defaultAttributes.outline['stroke-width'];
 }
