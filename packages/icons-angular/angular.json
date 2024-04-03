@@ -1,25 +1,25 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "",
+  "newProjectRoot": "projects",
   "projects": {
     "icons-angular": {
       "projectType": "library",
-      "root": ".",
-      "sourceRoot": "src",
-      "prefix": "tabler",
+      "root": "projects/icons-angular",
+      "sourceRoot": "projects/icons-angular/src",
+      "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "ng-package.json"
+            "project": "projects/icons-angular/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "tsconfig.lib.prod.json"
+              "tsConfig": "projects/icons-angular/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "tsconfig.lib.json"
+              "tsConfig": "projects/icons-angular/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -36,8 +36,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "packageManager": "pnpm"
   }
 }
