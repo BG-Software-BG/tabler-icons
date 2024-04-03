@@ -1,6 +1,24 @@
 {
-  "name": "icons-angular",
+  "name": "@tabler/icons-angular",
   "version": "3.0.0-beta.2",
+  "license": "MIT",
+  "author": "BG-Software",
+  "description": "A set of free MIT-licensed high-quality SVG icons for you to use in your Angular projects.",
+  "homepage": "https://tabler.io/icons",
+  "bugs": {
+    "url": "https://github.com/tabler/tabler-icons/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/codecalm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tabler/tabler-icons.git",
+    "directory": "packages/icons-angular"
+  },
+  "type": "module",
+  "sideEffects": false,
   "scripts": {
     "build": "pnpm run clean && pnpm run copy:license && pnpm run build:icons && pnpm typecheck && pnpm run build:ng",
     "build:icons": "node build.mjs",
