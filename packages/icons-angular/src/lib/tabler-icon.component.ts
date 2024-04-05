@@ -6,8 +6,12 @@ import { ITablerIconProvider, TABLER_ICONS } from './tabler-icon.provider';
 
 type SvgAttributes = { [key: string]: string | number | undefined };
 
+// todo add documentation
+// todo test with older Angular versions
+// todo test stadalone
 @Component({
   selector: 'tabler-icon',
+  // standalone: true,
   template: '<ng-content></ng-content>'
 })
 export class TablerIconComponent implements OnChanges {
@@ -57,7 +61,7 @@ export class TablerIconComponent implements OnChanges {
     };
 
     const iconElement = this.createElement(['svg', attributes, icon.nodes]);
-    iconElement.classList.add(['tabler-icon', `tabler-icon-${icon.name}`, this.class?.split(/ /).map(x => x.trim())]);
+    iconElement.classList.add('tabler-icon', `tabler-icon-${icon.name}`, this.class?.split(/ /).map(x => x.trim()));
 
     const childElements = this.elementRef.nativeElement.childNodes;
     for (const childElement of childElements) {
