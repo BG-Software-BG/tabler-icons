@@ -17,7 +17,6 @@
     "url": "git+https://github.com/tabler/tabler-icons.git",
     "directory": "packages/icons-angular"
   },
-  "type": "module",
   "sideEffects": false,
   "scripts": {
     "build": "pnpm run clean && pnpm run copy:license && pnpm run build:icons && pnpm typecheck && pnpm run build:ng",
@@ -25,8 +24,9 @@
     "build:ng": "ng build --configuration=production",
     "copy:license": "cp ../../LICENSE ./LICENSE",
     "clean": "rm -rf dist && find . ! -name '.gitkeep' -path '*/src/icons/*' -exec rm -rf {} +",
-    "test": "vitest run",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "test": "ng test --no-watch --no-progress",
+    "test:watch": "ng test"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.2",
