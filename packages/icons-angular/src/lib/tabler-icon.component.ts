@@ -1,4 +1,4 @@
-import { Component, ElementRef, Inject, Input, OnChanges, Renderer2 } from '@angular/core';
+import { Component, ElementRef, HostBinding, Inject, Input, OnChanges, Renderer2 } from '@angular/core';
 import defaultAttributes from '../defaultAttributes';
 import { TablerIcon, TablerIconNode } from '../types';
 import { TablerIconConfig } from './tabler-icon.config';
@@ -20,6 +20,10 @@ export class TablerIconComponent implements OnChanges {
   @Input() color?: string;
   @Input() strokeWidth?: number;
   @Input() class?: string;
+  @Input()
+  @HostBinding('style.height.px')
+  @HostBinding('style.width.px')
+  size?: number;
 
   constructor(
     @Inject(Renderer2) private readonly renderer: Renderer2,
@@ -29,6 +33,7 @@ export class TablerIconComponent implements OnChanges {
   ) {}
 
   ngOnChanges() {
+    this.size ??= this.iconConfig.size;
     if (typeof this.icon === 'string') {
       const icon = this.getIconFromProviders(this.toPascalCase(this.icon));
       if (icon) {
@@ -56,8 +61,8 @@ export class TablerIconComponent implements OnChanges {
     const attributes = {
       ...defaultAttributes[icon.type],
       ...typeAttributes,
-      width: this.size ?? this.iconConfig.size,
-      height: this.size ?? this.iconConfig.size
+      width: this.size,
+      height: this.size
     };
 
     const iconElement = this.createElement(['svg', attributes, icon.nodes]);
