@@ -10,7 +10,7 @@ describe('TablerIconComponent', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   const getSvgAttr = (attr: string) => fixture.nativeElement.querySelector('svg').getAttribute(attr);
   let icon: TablerIcon = { name: 'test', type: 'filled', nodes: [['path', { d: 'M8 7h-4', key: 'svg-0' }]] };
-  let icons: TablerIcons = { Test: icon };
+  let icons: TablerIcons = { IconTest: icon };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -61,7 +61,7 @@ describe('TablerIconComponent', () => {
     selector: 'tabler-test',
     template: `
       <tabler-icon
-        [icon]="iconTest"
+        icon="icon-test"
         class="test-class"
         [color]="color"
         [size]="size"
@@ -73,6 +73,5 @@ describe('TablerIconComponent', () => {
     size?: number;
     color?: string;
     class?: string;
-    iconTest = icon;
   }
 })

@@ -1,21 +1,18 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import defaultAttributes from '../defaultAttributes';
-import { TablerIcon, TablerIcons } from '../types';
+import { TablerIcon } from '../types';
 import { TablerIconComponent } from './tabler-icon.component';
-import { TablerIconModule } from './tabler-icon.module';
 
 describe('TablerIconComponent', () => {
   let hostComponent: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
   const getSvgAttr = (attr: string) => fixture.nativeElement.querySelector('svg').getAttribute(attr);
   let icon: TablerIcon = { name: 'test', type: 'outline', nodes: [['path', { d: 'M8 7h-4', key: 'svg-0' }]] };
-  let icons: TablerIcons = { Test: icon };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TablerIconComponent, TestHostComponent],
-      imports: [TablerIconModule.pick(icons)]
+      declarations: [TablerIconComponent, TestHostComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestHostComponent);
@@ -27,7 +24,7 @@ describe('TablerIconComponent', () => {
     expect(hostComponent).toBeTruthy();
   });
 
-  it('should have all default values if not provieded', () => {
+  it('should have all default values if not provided', () => {
     fixture.detectChanges();
     expect(getSvgAttr('width')).toBe(defaultAttributes.outline.width.toString(10));
     expect(getSvgAttr('fill')).toBe(defaultAttributes.outline.fill);
