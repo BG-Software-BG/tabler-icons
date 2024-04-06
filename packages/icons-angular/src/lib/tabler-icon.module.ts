@@ -1,12 +1,8 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { TablerIcons } from '../types';
-import { TablerIconComponent } from './tabler-icon.component';
 import { TABLER_ICONS, TablerIconProvider } from './tabler-icon.provider';
 
-@NgModule({
-  declarations: [TablerIconComponent],
-  exports: [TablerIconComponent]
-})
+@NgModule()
 export class TablerIconModule {
   static pick(icons: TablerIcons): ModuleWithProviders<TablerIconModule> {
     return {

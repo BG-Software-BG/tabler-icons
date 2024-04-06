@@ -18,7 +18,7 @@ const componentTemplate = ({ type, name, namePascal, children }) => {
 };
 
 const indexItemTemplate = ({
-                             name,
+                             _,
                              namePascal
                            }) => `export { default as ${namePascal}} from './${namePascal}';`;
 

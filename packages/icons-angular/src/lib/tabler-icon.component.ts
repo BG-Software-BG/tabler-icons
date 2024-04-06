@@ -6,17 +6,14 @@ import { ITablerIconProvider, TABLER_ICONS } from './tabler-icon.provider';
 
 type SvgAttributes = { [key: string]: string | number | undefined };
 
-// todo add documentation
-// todo test with older Angular versions
-// todo test stadalone
+// todo add readme
 @Component({
   selector: 'tabler-icon',
-  // standalone: true,
+  standalone: true,
   template: '<ng-content></ng-content>'
 })
 export class TablerIconComponent implements OnChanges {
   @Input({ required: true }) icon!: TablerIcon | string;
-  @Input() size?: number;
   @Input() color?: string;
   @Input() strokeWidth?: number;
   @Input() class?: string;
