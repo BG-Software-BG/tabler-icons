@@ -15,7 +15,7 @@ type SvgAttributes = { [key: string]: string | number | undefined };
 export class TablerIconComponent implements OnChanges {
   @Input({ required: true }) icon!: TablerIcon | string;
   @Input() color?: string;
-  @Input() strokeWidth?: number;
+  @Input() stroke?: number;
   @Input() class?: string;
   @Input()
   @HostBinding('style.height.px')
@@ -49,7 +49,7 @@ export class TablerIconComponent implements OnChanges {
     const typeAttributes = icon.type === 'outline'
       ? {
         stroke: this.color ?? this.iconConfig.color,
-        'stroke-width': this.strokeWidth ?? this.iconConfig.strokeWidth
+        'stroke-width': this.stroke ?? this.iconConfig.strokeWidth
       }
       : {
         fill: this.color ?? this.iconConfig.color
