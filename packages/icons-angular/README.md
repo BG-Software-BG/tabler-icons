@@ -1,27 +1,198 @@
-# TablerIconsAngular
+# Tabler Icons for Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
+<p align="center">
+<img src="https://raw.githubusercontent.com/tabler/tabler-icons/main/.github/packages/og-package-angular.png" alt="Tabler Icons" width="838">
+</p>
 
-## Development server
+<p align="center">
+  Implementation of the Tabler Icons library for Angular applications.
+<p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<p align="center">
+  <a href="https://tabler.io/icons/"><strong>Browse all icons at tabler.io &rarr;</strong></a>
+</p>
 
-## Code scaffolding
+<p align="center">
+    <a href="https://github.com/tabler/tabler-icons/releases"><img src="https://img.shields.io/npm/v/@tabler/icons" alt="Latest Release"></a>
+    <a href="https://github.com/tabler/tabler-icons/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/@tabler/icons.svg" alt="License"></a>
+</p>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Sponsors
 
-## Build
+**If you want to support our project and help us grow it, you can [become a sponsor on GitHub](https://github.com/sponsors/codecalm) or just [donate on PayPal](https://paypal.me/codecalm) :)**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<a href="https://github.com/sponsors/codecalm">
+  <img src='https://raw.githubusercontent.com/tabler/static/main/sponsors.png'>
+</a>
 
-## Running unit tests
+## Prerequisites
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The minimal supported version of Angular is 16.0.0.
 
-## Running end-to-end tests
+## Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+yarn add @tabler/icons-angular
+```
 
-## Further help
+or
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+npm install @tabler/icons-angular
+```
+
+or
+
+```
+pnpm install @tabler/icons-angular
+```
+
+## How to use
+
+It's build with ESmodules so it's tree-shakable. You decide which icons to include.
+
+You can include icons by providing them with `TablerIconModule` or by importing `TablerIcon` objects in a single component.
+
+### I. Using the provider
+
+#### 1a. Import with NgModules 
+
+In a module in which the icons are needed or in a main module
+```ts
+import { TablerIconComponent, TablerIconModule, IconAB, IconHome } from '@tabler/icons-angular';
+
+@NgModule({
+  imports: [TablerIconModule.pick({ IconAB, IconHome }), TablerIconComponent]
+  // other configuration
+})
+export class AppModule { }
+```
+
+#### 1b. Import without NgModules 
+
+In `main.ts`
+
+```ts
+import { TablerIconModule, IconAB, IconHome } from '@tabler/icons-angular';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(TablerIconModule.pick({ IconHome }))
+  ]
+})
+```
+
+or in a route configuration
+
+```ts
+import { IconHome, TablerIconModule } from '@tabler/icons-angular';
+
+export const routes: Routes = [
+  {
+    path: 'demo',
+    component: DemoComponent,
+    providers: [importProvidersFrom(TablerIconModule.pick({ IconHome }))]
+  }
+];
+```
+
+In a standalone component which needs a TablerIconComponent
+
+```ts
+import { TablerIconComponent } from '@tabler/icons-angular';
+
+@Component({
+  imports: [TablerIconComponent],
+  standalone: true,
+  // other configuration
+})
+export class DemoComponent { }
+```
+
+#### 2. Use an icon component in a template
+
+```html
+<tabler-icon icon="icon-home"></tabler-icon>
+<tabler-icon icon="home"></tabler-icon>
+```
+
+### II. Importing an icon object
+
+#### 1a. Import with NgModules
+
+In a module in which the icons are needed or in a main module:
+```ts
+import { TablerIconComponent, TablerIconModule } from '@tabler/icons-angular';
+
+@NgModule({
+  imports: [TablerIconModule, TablerIconComponent]
+  // other configuration
+})
+export class AppModule { }
+```
+
+#### 1b. Import in a standalone component
+
+```ts
+import { TablerIconComponent, IconHome } from '@tabler/icons-angular';
+
+@Component({
+  imports: [TablerIconComponent],
+  standalone: true,
+  // other configuration
+})
+export class AppComponent {
+  iconHome = IconHome;
+}
+```
+
+#### 2. Use an icon component in a template
+
+```html
+<tabler-icon [icon]="iconHome"></tabler-icon>
+```
+
+## Props
+
+| name          | type     | default      |
+| ------------- |----------| ------------ |
+| `size`        | _number_ | 24           |
+| `color`       | _string_ | currentColor |
+| `stroke`      | _number_ | 2            |
+
+```html
+<tabler-icon icon="home" [size]="48" color="blue" [stroke]="1.75" class="my-icon"></tabler-icon>
+```
+
+## Global configuration
+
+If you want to change default property values globally you can overwrite `TablerIconConfig` using providers.
+You are able to set all three properties or just some of them.
+
+```ts
+{
+  provide: TablerIconConfig, useValue: {
+    size: 40,
+    stroke: 1,
+    color: 'blue'
+  }
+}
+```
+
+```ts
+{ provide: TablerIconConfig, useValue: { size: 40 } }
+```
+
+## Contributing
+
+For more info on how to contribute please see the [contribution guidelines](https://github.com/tabler/tabler-icons/blob/main/CONTRIBUTING.md).
+
+Caught a mistake or want to contribute to the documentation? [Edit this page on Github](https://github.com/tabler/tabler-icons/blob/main/packages/icons-react/README.md)
+
+## License
+
+Tabler Icons is licensed under the [MIT License](https://github.com/tabler/tabler-icons/blob/master/LICENSE).
+
+## Sponsor Tabler
+
+<a href="https://github.com/sponsors/codecalm" target="_blank"><img src="https://github.com/tabler/tabler/raw/dev/src/static/sponsor-banner-readme.png?raw=true" alt="Sponsor Tabler" /></a>
