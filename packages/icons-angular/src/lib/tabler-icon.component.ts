@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, Inject, Input, OnChanges, Renderer2 } from '@angular/core';
+import { Component, ElementRef, HostBinding, inject, Inject, Input, OnChanges, Renderer2 } from '@angular/core';
 import defaultAttributes from '../defaultAttributes';
 import { TablerIcon, TablerIconNode } from '../types';
 import { TablerIconConfig } from './tabler-icon.config';
@@ -6,7 +6,6 @@ import { ITablerIconProvider, TABLER_ICONS } from './tabler-icon.provider';
 
 type SvgAttributes = { [key: string]: string | number | undefined };
 
-// todo add readme
 @Component({
   selector: 'tabler-icon',
   standalone: true,
@@ -21,16 +20,23 @@ export class TablerIconComponent implements OnChanges {
   @HostBinding('style.height.px')
   @HostBinding('style.width.px')
   size?: number;
+  config: TablerIconConfig;
 
   constructor(
     @Inject(Renderer2) private readonly renderer: Renderer2,
     @Inject(TABLER_ICONS) private readonly iconProviders: ITablerIconProvider[],
-    @Inject(ElementRef) private readonly elementRef: ElementRef,
-    @Inject(TablerIconConfig) private readonly iconConfig: TablerIconConfig
-  ) {}
+    @Inject(ElementRef) private readonly elementRef: ElementRef
+  ) {
+    this.config = {
+      size: defaultAttributes.outline.width,
+      color: defaultAttributes.outline.stroke,
+      stroke: defaultAttributes.outline['stroke-width'],
+      ...inject(TablerIconConfig)
+    };
+  }
 
   ngOnChanges() {
-    this.size ??= this.iconConfig.size;
+    this.size ??= this.config.size;
     if (typeof this.icon === 'string') {
       const icon = this.getIconFromProviders(this.toPascalCase(this.icon));
       if (icon) {
@@ -48,11 +54,11 @@ export class TablerIconComponent implements OnChanges {
   private replaceElement(icon: TablerIcon): void {
     const typeAttributes = icon.type === 'outline'
       ? {
-        stroke: this.color ?? this.iconConfig.color,
-        'stroke-width': this.stroke ?? this.iconConfig.strokeWidth
+        stroke: this.color ?? this.config.color,
+        'stroke-width': this.stroke ?? this.config.stroke
       }
       : {
-        fill: this.color ?? this.iconConfig.color
+        fill: this.color ?? this.config.color
       };
 
     const attributes = {

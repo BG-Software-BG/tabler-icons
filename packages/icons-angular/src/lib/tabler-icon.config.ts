@@ -3,7 +3,7 @@ import defaultAttributes from '../defaultAttributes';
 
 @Injectable({ providedIn: 'root' })
 export class TablerIconConfig {
-  size: number = defaultAttributes.outline.width;
-  color: string = defaultAttributes.outline.stroke;
-  strokeWidth: number = defaultAttributes.outline['stroke-width'];
+  size?: number;
+  color?: string;
+  stroke?: number;
 }
