@@ -14,8 +14,8 @@ describe('TablerIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TablerIconComponent, TestHostComponent],
-      imports: [TablerIconModule.pick(icons)]
+      declarations: [TestHostComponent],
+      imports: [TablerIconComponent, TablerIconModule.pick(icons)]
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestHostComponent);

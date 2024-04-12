@@ -12,7 +12,8 @@ describe('TablerIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TablerIconComponent, TestHostComponent]
+      declarations: [TestHostComponent],
+      imports: [TablerIconComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestHostComponent);
@@ -50,10 +51,10 @@ describe('TablerIconComponent', () => {
   })
 
   it('should set stroke width', () => {
-    const strokeWidth = 1.75;
-    hostComponent.strokeWidth = strokeWidth;
+    const stroke = 1.75;
+    hostComponent.stroke = stroke;
     fixture.detectChanges();
-    expect(getSvgAttr('stroke-width')).toBe(strokeWidth.toString(10));
+    expect(getSvgAttr('stroke-width')).toBe(stroke.toString(10));
   })
 
   it('should add all classes', () => {
@@ -69,7 +70,7 @@ describe('TablerIconComponent', () => {
         class="test-class"
         [color]="color"
         [size]="size"
-        [strokeWidth]="strokeWidth"
+        [stroke]="stroke"
         [class]="class"
       ></tabler-icon>
     `,
@@ -77,7 +78,7 @@ describe('TablerIconComponent', () => {
   class TestHostComponent {
     size?: number;
     color?: string;
-    strokeWidth?: number;
+    stroke?: number;
     class?: string;
     iconTest = icon;
   }
